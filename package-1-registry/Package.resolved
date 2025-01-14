@@ -2,29 +2,19 @@
   "originHash" : "f22bd45e04d86a1ec997eb72f481d2f5cc3108849396acd8874c0dd937908e2d",
   "pins" : [
     {
-      "identity" : "aexml",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tadija/AEXML.git",
-      "state" : {
-        "revision" : "38f7d00b23ecd891e1ee656fa6aeebd6ba04ecc3",
-        "version" : "4.6.1"
-      }
-    },
-    {
-      "identity" : "anycodable",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Flight-School/AnyCodable",
-      "state" : {
-        "revision" : "862808b2070cd908cb04f9aafe7de83d35f81b05",
-        "version" : "0.6.7"
-      }
-    },
-    {
       "identity" : "apple.swift-argument-parser",
       "kind" : "registry",
       "location" : "",
       "state" : {
         "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "apple.swift-atomics",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2.0"
       }
     },
     {
@@ -52,6 +42,14 @@
       }
     },
     {
+      "identity" : "apple.swift-nio",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.77.0"
+      }
+    },
+    {
       "identity" : "apple.swift-openapi-runtime",
       "kind" : "registry",
       "location" : "",
@@ -76,20 +74,19 @@
       }
     },
     {
+      "identity" : "apple.swift-system",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.4.0"
+      }
+    },
+    {
       "identity" : "chrisaljoudi.swift-log-oslog",
       "kind" : "registry",
       "location" : "",
       "state" : {
         "version" : "0.2.2"
-      }
-    },
-    {
-      "identity" : "colorizer",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/getGuaka/Colorizer.git",
-      "state" : {
-        "revision" : "2ccc99bf1715e73c4139e8d40b6e6b30be975586",
-        "version" : "0.2.1"
       }
     },
     {
@@ -117,12 +114,27 @@
       }
     },
     {
-      "identity" : "kanna",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tid-kijyun/Kanna.git",
+      "identity" : "getGuaka.Colorizer",
+      "kind" : "registry",
+      "location" : "",
       "state" : {
-        "revision" : "41c3d28ea0eac07e4551b28def9de1ede702e739",
-        "version" : "5.3.0"
+        "version" : "0.2.1"
+      }
+    },
+    {
+      "identity" : "JohnSundell.ShellOut",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "jpsim.Yams",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.1.3"
       }
     },
     {
@@ -142,15 +154,6 @@
       }
     },
     {
-      "identity" : "komondor",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/shibapm/Komondor.git",
-      "state" : {
-        "revision" : "90b087b1e39069684b1ff4bf915c2aae594f2d60",
-        "version" : "1.1.3"
-      }
-    },
-    {
       "identity" : "krzysztofzablocki.Difference",
       "kind" : "registry",
       "location" : "",
@@ -159,48 +162,51 @@
       }
     },
     {
-      "identity" : "mockable",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Kolos65/Mockable",
+      "identity" : "kylef.PathKit",
+      "kind" : "registry",
+      "location" : "",
       "state" : {
-        "revision" : "e1b311b01c11415099341eee49769185e965ac4c",
-        "version" : "0.2.0"
-      }
-    },
-    {
-      "identity" : "packageconfig",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/shibapm/PackageConfig.git",
-      "state" : {
-        "revision" : "58523193c26fb821ed1720dcd8a21009055c7cdb",
-        "version" : "1.1.3"
-      }
-    },
-    {
-      "identity" : "path",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tuist/Path",
-      "state" : {
-        "revision" : "7c74ac435e03a927c3a73134c48b61e60221abcb",
-        "version" : "0.3.8"
-      }
-    },
-    {
-      "identity" : "pathkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kylef/PathKit.git",
-      "state" : {
-        "revision" : "3bfd2737b700b9a36565a8c94f4ad2b050a5e574",
         "version" : "1.0.1"
       }
     },
     {
-      "identity" : "shellout",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JohnSundell/ShellOut.git",
+      "identity" : "kylef.Spectre",
+      "kind" : "registry",
+      "location" : "",
       "state" : {
-        "revision" : "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
-        "version" : "2.3.0"
+        "version" : "0.10.1"
+      }
+    },
+    {
+      "identity" : "MaxDesiatov.XMLCoder",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.17.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-issue-reporting",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.4.3"
+      }
+    },
+    {
+      "identity" : "shibapm.Komondor",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.3"
+      }
+    },
+    {
+      "identity" : "shibapm.PackageConfig",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.3"
       }
     },
     {
@@ -212,128 +218,11 @@
       }
     },
     {
-      "identity" : "spectre",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kylef/Spectre.git",
-      "state" : {
-        "revision" : "26cc5e9ae0947092c7139ef7ba612e34646086c7",
-        "version" : "0.10.1"
-      }
-    },
-    {
-      "identity" : "stencil",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/stencilproject/Stencil.git",
-      "state" : {
-        "revision" : "4f222ac85d673f35df29962fc4c36ccfdaf9da5b",
-        "version" : "0.15.1"
-      }
-    },
-    {
       "identity" : "stencilproject.Stencil",
       "kind" : "registry",
       "location" : "",
       "state" : {
         "version" : "0.15.1"
-      }
-    },
-    {
-      "identity" : "stencilswiftkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftGen/StencilSwiftKit.git",
-      "state" : {
-        "revision" : "20e2de5322c83df005939d9d9300fab130b49f97",
-        "version" : "2.10.1"
-      }
-    },
-    {
-      "identity" : "swift-argument-parser",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser.git",
-      "state" : {
-        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
-        "version" : "1.5.0"
-      }
-    },
-    {
-      "identity" : "swift-atomics",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-atomics.git",
-      "state" : {
-        "revision" : "cd142fd2f64be2100422d658e7411e39489da985",
-        "version" : "1.2.0"
-      }
-    },
-    {
-      "identity" : "swift-collections",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-collections",
-      "state" : {
-        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
-        "version" : "1.1.4"
-      }
-    },
-    {
-      "identity" : "swift-http-types",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-http-types",
-      "state" : {
-        "revision" : "ef18d829e8b92d731ad27bb81583edd2094d1ce3",
-        "version" : "1.3.1"
-      }
-    },
-    {
-      "identity" : "swift-issue-reporting",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/swift-issue-reporting",
-      "state" : {
-        "revision" : "a3f634d1a409c7979cabc0a71b3f26ffa9fc8af1",
-        "version" : "1.4.3"
-      }
-    },
-    {
-      "identity" : "swift-log",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-log.git",
-      "state" : {
-        "revision" : "96a2f8a0fa41e9e09af4585e2724c4e825410b91",
-        "version" : "1.6.2"
-      }
-    },
-    {
-      "identity" : "swift-nio",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-nio",
-      "state" : {
-        "revision" : "27c839f4700069928196cd0e9fa03b22f297078a",
-        "version" : "2.78.0"
-      }
-    },
-    {
-      "identity" : "swift-openapi-runtime",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-openapi-runtime",
-      "state" : {
-        "revision" : "23146bc8710ac5e57abb693113f02dc274cf39b6",
-        "version" : "1.8.0"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-syntax.git",
-      "state" : {
-        "revision" : "2bc86522d115234d1f588efe2bcb4ce4be8f8b82",
-        "version" : "510.0.3"
-      }
-    },
-    {
-      "identity" : "swift-system",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-system.git",
-      "state" : {
-        "revision" : "c8a44d836fe7913603e246acab7c528c2e780168",
-        "version" : "1.4.0"
       }
     },
     {
@@ -353,11 +242,35 @@
       }
     },
     {
+      "identity" : "swiftlang.swift-syntax",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "510.0.3"
+      }
+    },
+    {
       "identity" : "swiftlang.swift-tools-support-core",
       "kind" : "registry",
       "location" : "",
       "state" : {
         "version" : "0.7.2"
+      }
+    },
+    {
+      "identity" : "tadija.AEXML",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.6.1"
+      }
+    },
+    {
+      "identity" : "tid-kijyun.Kanna",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.3.0"
       }
     },
     {
@@ -373,7 +286,7 @@
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "0.7.1"
+        "version" : "0.7.0"
       }
     },
     {
@@ -413,42 +326,6 @@
       "kind" : "registry",
       "location" : "",
       "state" : {
-        "version" : "0.9.19"
-      }
-    },
-    {
-      "identity" : "xctest-dynamic-overlay",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
-      "state" : {
-        "revision" : "a3f634d1a409c7979cabc0a71b3f26ffa9fc8af1",
-        "version" : "1.4.3"
-      }
-    },
-    {
-      "identity" : "xmlcoder",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MaxDesiatov/XMLCoder.git",
-      "state" : {
-        "revision" : "b1e944cbd0ef33787b13f639a5418d55b3bed501",
-        "version" : "0.17.1"
-      }
-    },
-    {
-      "identity" : "yams",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jpsim/Yams.git",
-      "state" : {
-        "revision" : "3036ba9d69cf1fd04d433527bc339dc0dc75433d",
-        "version" : "5.1.3"
-      }
-    },
-    {
-      "identity" : "zipfoundation",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/weichsel/ZIPFoundation",
-      "state" : {
-        "revision" : "02b6abe5f6eef7e3cbd5f247c5cc24e246efcfe0",
         "version" : "0.9.19"
       }
     }
