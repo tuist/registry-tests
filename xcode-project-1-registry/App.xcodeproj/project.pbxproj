@@ -196,9 +196,7 @@
 			mainGroup = F88724D82D36AADB00C8376E;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F8FE14662D36ABCB000BBD39 /* XCRemoteSwiftPackageReference "ios_sdk" */,
-				F8FE14672D36ABE6000BBD39 /* XCRemoteSwiftPackageReference "adjust_signature_sdk" */,
-				F8FE14682D36ABFF000BBD39 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F88FB8272D36D1B500DC52BE /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F88724E22D36AADB00C8376E /* Products */;
@@ -559,23 +557,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F8FE14662D36ABCB000BBD39 /* XCRemoteSwiftPackageReference "ios_sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = adjust.ios_sdk;
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
-		F8FE14672D36ABE6000BBD39 /* XCRemoteSwiftPackageReference "adjust_signature_sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = adjust.adjust_signature_sdk;
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.35.2;
-			};
-		};
-		F8FE14682D36ABFF000BBD39 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		F88FB8272D36D1B500DC52BE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = Alamofire.Alamofire;
 			requirement = {
