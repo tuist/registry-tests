@@ -138,13 +138,13 @@ jobs:
           repository: swiftlang/swift-package-manager
           path: swift-package-manager
           ref: main
-      - name: Restore cache
-        id: cache-restore
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            swift-package-manager/.build
-          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+          # - name: Restore cache
+          #   id: cache-restore
+          #   uses: actions/cache/restore@v4
+          #   with:
+          #     path: |
+          #       swift-package-manager/.build
+          #     key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
           restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         working-directory: swift-package-manager
