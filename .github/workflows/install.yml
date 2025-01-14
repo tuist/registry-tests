@@ -24,8 +24,8 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            ${{ matrix.package }}.build
-          key: ${{ runner.os }}-${{ hashFiles('${{ matrix.package }}/Package.resolved') }}
+            ${{ matrix.package }}/.build
+          key: ${{ runner.os }}-${{ hashFiles('*/Package.resolved') }}
           restore-keys: ${{ matrix.package }}/.build
       - name: Log in to Tuist
         run: tuist registry login
