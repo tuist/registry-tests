@@ -94,7 +94,6 @@ jobs:
                                          -r htps \
                                          -U \
                                          -T /usr/bin/xcodebuild \
-                                         "${AUTHORISATION[@]}" \
                                          $KEYCHAIN_PATH
           xcodebuild -resolvePackageDependencies
       - name: Install Swift package dependencies with source control
@@ -102,71 +101,77 @@ jobs:
         if: ${{ endsWith(matrix.package, '-scm') }}
         run: swift package resolve --verbose
 
-  # install-swift-package-manager-main:
-  #   name: Install with swift-package-manager@main
-  #   runs-on: macos-15
-  #   timeout-minutes: 20
-  #   strategy:
-  #     matrix:
-  #       package: [package-1-scm, package-1-registry]
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         repository: swiftlang/swift-package-manager
-  #         path: swift-package-manager
-  #         ref: main
-  #     - name: Restore cache
-  #       id: cache-restore
-  #       uses: actions/cache/restore@v4
-  #       with:
-  #         path: |
-  #           swift-package-manager/.build
-  #         key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
-  #         restore-keys: swift-package-manager/.build
-  #     - name: Build Swift Package Manager
-  #       working-directory: swift-package-manager
-  #       run: swift build --configuration release
-  #     - name: Save cache
-  #       id: cache-save
-  #       uses: actions/cache/save@v4
-  #       with:
-  #         path: |
-  #           swift-package-manager/.build
-  #         key: ${{ steps.cache-restore.outputs.cache-primary-key }}
-  #     - uses: jdx/mise-action@v2
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #     - name: Create keychain
-  #       run: |
-  #         TMP_DIRECTORY=$(mktemp -d)
-  #         KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
-  #         KEYCHAIN_PASSWORD=$(uuidgen)
-  #         security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-  #         security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-  #         security default-keychain -s $KEYCHAIN_PATH
-  #         security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-  #     - name: Log in to Tuist
-  #       run: tuist registry login
-  #       working-directory: ${{ matrix.package }}
-  #       env:
-  #         TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-  #     - name: Install Swift package dependencies with registry
-  #       working-directory: ${{ matrix.package }}
-  #       if: ${{ endsWith(matrix.package, '-registry') }}
-  #       env:
-  #         TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-  #       run: |
-  #         TMP_DIRECTORY=$(mktemp -d)
-  #         KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
-  #         KEYCHAIN_PASSWORD=$(uuidgen)
-  #         security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-  #         security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-  #         security default-keychain -s $KEYCHAIN_PATH
-  #         security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-  #         tuist registry login
-  #         ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
-  #     - name: Install Swift package dependencies with source control
-  #       working-directory: ${{ matrix.package }}
-  #       if: ${{ endsWith(matrix.package, '-scm') }}
-  #       run: ../swift-package-manager/.build/release/swift-package resolve --verbose
+  install-swift-package-manager-main:
+    name: Install with swift-package-manager@main
+    runs-on: macos-15
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        package: [package-1-scm, package-1-registry]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: swiftlang/swift-package-manager
+          path: swift-package-manager
+          ref: main
+      - name: Restore cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            swift-package-manager/.build
+          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+          restore-keys: swift-package-manager/.build
+      - name: Build Swift Package Manager
+        working-directory: swift-package-manager
+        run: swift build --configuration release
+      - name: Save cache
+        id: cache-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            swift-package-manager/.build
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+      - uses: jdx/mise-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create keychain
+        run: |
+          TMP_DIRECTORY=$(mktemp -d)
+          KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
+          KEYCHAIN_PASSWORD=$(uuidgen)
+          security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security default-keychain -s $KEYCHAIN_PATH
+          security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+      - name: Log in to Tuist
+        run: tuist registry login
+        working-directory: ${{ matrix.package }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+      - name: Install Swift package dependencies with registry
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-registry') }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+        run: |
+          TMP_DIRECTORY=$(mktemp -d)
+          KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
+          KEYCHAIN_PASSWORD=$(uuidgen)
+          security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security default-keychain -s $KEYCHAIN_PATH
+          security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+          security add-internet-password -a token \
+                                         -s tuist.dev \
+                                         -w $TUIST_CONFIG_TOKEN \
+                                         -r htps \
+                                         -U \
+                                         -T ../swift-package-manager/.build/release/swift-package \
+                                         $KEYCHAIN_PATH
+          ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
+      - name: Install Swift package dependencies with source control
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-scm') }}
+        run: ../swift-package-manager/.build/release/swift-package resolve --verbose
