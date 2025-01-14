@@ -205,8 +205,7 @@ jobs:
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: ls ../swift-package-manager/.build
-          hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry resolve'
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry resolve'
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
