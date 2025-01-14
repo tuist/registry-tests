@@ -57,6 +57,8 @@ jobs:
           [
             package-1-scm,
             package-1-registry,
+            package-2-scm,
+            package-2-registry,
             xcode-project-1-registry,
             xcode-project-1-scm,
           ]
@@ -130,7 +132,8 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        package: [package-1-scm, package-1-registry]
+        package:
+          [package-1-scm, package-1-registry, package-2-scm, package-2-registry]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
