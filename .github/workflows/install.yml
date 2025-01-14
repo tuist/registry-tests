@@ -109,7 +109,7 @@ jobs:
         run: hyperfine --prepare 'rm -rf packages' --warmup 1 --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages'
       - name: Install Swift package dependencies with source control and xcodebuild
         working-directory: ${{ matrix.package }}
-        if: ${{ startsWith(matrix.package, 'xcode-project) && endsWith(matrix.package, '-scm') }}
+        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
         run: xcodebuild -resolvePackageDependencies
       - name: Hyperfine Swift package dependencies source control and xcodebuild
         working-directory: ${{ matrix.package }}
