@@ -1,0 +1,33 @@
+{
+  "originHash" : "5fb1463725a8a1f9b73d7d8eadd17631069232561aa002878ceb8b579688c492",
+  "pins" : [
+    {
+      "identity" : "adjust_signature_sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adjust/adjust_signature_sdk",
+      "state" : {
+        "branch" : "main",
+        "revision" : "41931c009a7c5d9864bdf1e02f384ec072d20a5a"
+      }
+    },
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "ios_sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adjust/ios_sdk",
+      "state" : {
+        "revision" : "96e1b62c6220355ae1e579432ef83dbc4d25a87c",
+        "version" : "5.0.2"
+      }
+    }
+  ],
+  "version" : 3
+}

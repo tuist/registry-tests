@@ -53,13 +53,41 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        package: [package-1-scm, package-1-registry, xcode-project-1-registry]
+        package:
+          [
+            package-1-scm,
+            package-1-registry,
+            xcode-project-1-registry,
+            xcode-project-1-scm,
+          ]
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create keychain
+      # - name: Create keychain
+      #   run: |
+      #     TMP_DIRECTORY=$(mktemp -d)
+      #     KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
+      #     KEYCHAIN_PASSWORD=$(uuidgen)
+      #     security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+      #     security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+      #     security default-keychain -s $KEYCHAIN_PATH
+      #     security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+      # - name: Log in to Tuist
+      #   run: tuist registry login
+      #   working-directory: ${{ matrix.package }}
+      #   env:
+      #     TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+      - name: Install Swift package dependencies with registry
+        working-directory: ${{ matrix.package }}
+        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+        run: swift package --replace-scm-with-registry resolve --verbose
+      - name: Resolve Swift package dependencies with registry and xcodebuild
+        working-directory: ${{ matrix.package }}
+        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
         run: |
           TMP_DIRECTORY=$(mktemp -d)
           KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
@@ -68,19 +96,8 @@ jobs:
           security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
           security default-keychain -s $KEYCHAIN_PATH
           security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-      - name: Log in to Tuist
-        run: tuist registry login
-        working-directory: ${{ matrix.package }}
-        env:
-          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-      - name: Install Swift package dependencies with registry
-        working-directory: ${{ matrix.package }}
-        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: swift package --replace-scm-with-registry resolve --verbose
-      - name: Resolve Swift package dependencies with registry and xcodebuild
-        working-directory: ${{ matrix.package }}
-        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: xcodebuild -resolvePackageDependencies
+          tuist registry login
+          xcodebuild -resolvePackageDependencies
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
