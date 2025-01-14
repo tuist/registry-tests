@@ -96,7 +96,7 @@ jobs:
           restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         working-directory: swift-package-manager
-        run: swift build swift-package-manager --configuration release
+        run: swift build --configuration release
       - name: Save cache
         id: cache-save
         uses: actions/cache/save@v4
