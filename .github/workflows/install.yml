@@ -66,11 +66,11 @@ jobs:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
-        if: ${{ endsWith(matrix.package, '-registry') }}
+        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
         run: swift package --replace-scm-with-registry resolve --verbose
       - name: Resolve Swift package dependencies with registry and xcodebuild
         working-directory: ${{ matrix.package }}
-        if: ${{ endsWith(matrix.package, '-registry') }}
+        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
         run: xcodebuild -resolvePackageDependencies
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
