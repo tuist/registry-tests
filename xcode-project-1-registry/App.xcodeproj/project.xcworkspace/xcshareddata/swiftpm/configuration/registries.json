@@ -7,7 +7,7 @@
     }
   },
   "authentication": {
-    "canary.tuist.dev": {
+    "tuist.dev": {
       "loginAPIPath": "/api/accounts/tuist/registry/swift/login",
       "type": "token"
     }
