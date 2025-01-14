@@ -108,7 +108,7 @@ jobs:
                       -a token \
                       -s tuist.dev \
                       -S "com.apple.swift-package,com.apple.security,com.apple.dt.Xcode,apple-tool:,apple:,codesign" \
-                      -k $KEYCHAIN_PASSWORD KEYCHAIN_PATH
+                      -k $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
           security find-internet-password $KEYCHAIN_PATH
           which xcodebuild
           xcodebuild -resolvePackageDependencies
