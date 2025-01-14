@@ -96,6 +96,13 @@ jobs:
           restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         run: swift build --package-path swift-package-manager --configuration release
+      - name: Save cache
+        id: cache-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            swift-package-manager/.build
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
         env:
