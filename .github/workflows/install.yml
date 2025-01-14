@@ -116,12 +116,7 @@ jobs:
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: |
-          pwd
-          ls ../
-          ls ../swift-package-manager
-          ls ../swift-package-manager/.build/release
-          ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
+        run: ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
