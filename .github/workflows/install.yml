@@ -138,13 +138,13 @@ jobs:
           repository: swiftlang/swift-package-manager
           path: swift-package-manager
           ref: main
-          # - name: Restore cache
-          #   id: cache-restore
-          #   uses: actions/cache/restore@v4
-          #   with:
-          #     path: |
-          #       swift-package-manager/.build
-          #     key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+      - name: Restore cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            swift-package-manager/.build
+          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
           restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         working-directory: swift-package-manager
@@ -202,7 +202,7 @@ jobs:
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose' --show-output
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose' --show-output
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
@@ -210,4 +210,4 @@ jobs:
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package resolve'
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package resolve' --show-output
