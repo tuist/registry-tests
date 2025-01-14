@@ -53,7 +53,7 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        package: [package-1-scm, package-1-registry]
+        package: [package-1-scm, package-1-registry, xcodeproj-1-registry]
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
@@ -68,6 +68,10 @@ jobs:
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
         run: swift package --replace-scm-with-registry resolve --verbose
+      - name: Resolve Swift package dependencies with registry and xcodebuild
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-registry') }}
+        run: xcodebuild -resolvePackageDependencies
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
@@ -136,7 +140,7 @@ jobs:
           security default-keychain -s $KEYCHAIN_PATH
           security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
           tuist registry login
-          ../swift-package-manager/.build/release/swift-package resolve --verbose
+          ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}

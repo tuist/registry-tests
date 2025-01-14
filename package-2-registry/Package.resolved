@@ -1,0 +1,496 @@
+{
+  "pins" : [
+    {
+      "identity" : "afnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AFNetworking/AFNetworking",
+      "state" : {
+        "revision" : "ffae2391ab0c29dc88eb0a58d2f5b2c2c27cadbf",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "airbnb.lottie-ios",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.4.3"
+      }
+    },
+    {
+      "identity" : "Alamofire.Alamofire",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.9.0"
+      }
+    },
+    {
+      "identity" : "apple.swift-collections",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.4"
+      }
+    },
+    {
+      "identity" : "apple.swift-protobuf",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.28.2"
+      }
+    },
+    {
+      "identity" : "appsflyerframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
+      "state" : {
+        "revision" : "3c77b7ec3ad5991868837c5ac8085882310a4cd0",
+        "version" : "6.8.0"
+      }
+    },
+    {
+      "identity" : "appstefan.highlightswift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "AzureAD.microsoft-authentication-library-for-objc",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "bitmark-inc.tweetnacl-swiftwrap",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "CombineCommunity.CombineExt",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.8.1"
+      }
+    },
+    {
+      "identity" : "CombineCommunity.RxCombine",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "firebase.firebase-ios-sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.22.1"
+      }
+    },
+    {
+      "identity" : "firebase.leveldb",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.22.5"
+      }
+    },
+    {
+      "identity" : "firebase.nanopb",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.30910.0"
+      }
+    },
+    {
+      "identity" : "Flight-School.AnyCodable",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.6.7"
+      }
+    },
+    {
+      "identity" : "getsentry.sentry-cocoa",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "8.39.0"
+      }
+    },
+    {
+      "identity" : "google.abseil-cpp-binary",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2022062300.1"
+      }
+    },
+    {
+      "identity" : "google.app-check",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.19.2"
+      }
+    },
+    {
+      "identity" : "google.GoogleAppMeasurement",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.22.1"
+      }
+    },
+    {
+      "identity" : "google.GoogleDataTransport",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "9.4.0"
+      }
+    },
+    {
+      "identity" : "google.GoogleSignIn-iOS",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "7.0.0"
+      }
+    },
+    {
+      "identity" : "google.GoogleUtilities",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "7.13.3"
+      }
+    },
+    {
+      "identity" : "google.grpc-binary",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.49.2"
+      }
+    },
+    {
+      "identity" : "google.gtm-session-fetcher",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.5.0"
+      }
+    },
+    {
+      "identity" : "google.GTMAppAuth",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "google.interop-ios-for-google-sdks",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "100.0.0"
+      }
+    },
+    {
+      "identity" : "google.promises",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "groue.GRDB_swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "6.29.3"
+      }
+    },
+    {
+      "identity" : "kaishin.Gifu",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.3.1"
+      }
+    },
+    {
+      "identity" : "kean.Nuke",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "12.1.6"
+      }
+    },
+    {
+      "identity" : "krzysztofzablocki.LifetimeTracker",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.8.1"
+      }
+    },
+    {
+      "identity" : "marmelroy.PhoneNumberKit",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.0.0"
+      }
+    },
+    {
+      "identity" : "mattgallagher.CwlCatchException",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "mattgallagher.CwlPreconditionTesting",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.2.2"
+      }
+    },
+    {
+      "identity" : "openid.AppAuth-iOS",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.7.6"
+      }
+    },
+    {
+      "identity" : "pointfreeco.combine-schedulers",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-case-paths",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.5.6"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-clocks",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-composable-architecture",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.17.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-concurrency-extras",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-custom-dump",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.3"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-dependencies",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.6.3"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-identified-collections",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-navigation",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.2.3"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-perception",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.4.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-sharing",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-snapshot-testing",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.17.6"
+      }
+    },
+    {
+      "identity" : "pointfreeco.xctest-dynamic-overlay",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.4.3"
+      }
+    },
+    {
+      "identity" : "pusher.NWWebSocket",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.5.4"
+      }
+    },
+    {
+      "identity" : "pusher.pusher-websocket-swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.0.2"
+      }
+    },
+    {
+      "identity" : "Quick.Nimble",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "9.2.1"
+      }
+    },
+    {
+      "identity" : "Quick.Quick",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.0.0"
+      }
+    },
+    {
+      "identity" : "ReactiveX.RxSwift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "6.7.0"
+      }
+    },
+    {
+      "identity" : "RxSwiftCommunity.RxDataSources",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "RxSwiftCommunity.RxSwiftExt",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "6.2.0"
+      }
+    },
+    {
+      "identity" : "rxwebkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxWebKit",
+      "state" : {
+        "revision" : "4f70b83a63e4dfc59ec1d3fd632788eb31069134",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "siteline.SwiftUI-Introspect",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "SnapKit.SnapKit",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "swiftlang.swift-syntax",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "vadymmarkov.Fakery",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "WenchaoD.FSCalendar",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.8.4"
+      }
+    }
+  ],
+  "version" : 2
+}

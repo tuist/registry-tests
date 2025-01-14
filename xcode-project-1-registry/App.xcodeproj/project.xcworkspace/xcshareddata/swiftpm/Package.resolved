@@ -1,0 +1,30 @@
+{
+  "originHash" : "87b12ed117a3902830294ffdfb5a713e9ad70bf1cc7b54e9c560c7e20cbfb2a7",
+  "pins" : [
+    {
+      "identity" : "adjust.adjust_signature_sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.35.2"
+      }
+    },
+    {
+      "identity" : "adjust.ios_sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "Alamofire.Alamofire",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.10.2"
+      }
+    }
+  ],
+  "version" : 3
+}
