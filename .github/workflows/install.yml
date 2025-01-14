@@ -1,4 +1,4 @@
-name: Install test
+name: Install
 
 on:
   push:
@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   install-cache:
-    name: Install Swift package dependencies with cache
+    name: Install Swift packages with cache
     runs-on: macos-15
     timeout-minutes: 20
     strategy:
@@ -29,9 +29,11 @@ jobs:
           restore-keys: .build
       - name: Log in to Tuist
         run: tuist registry login
+        working-directory: ${{ matrix.package }}
         env:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies
+        working-directory: ${{ matrix.package }}
         run: swift package resolve
       - name: Save cache
         id: cache-save
