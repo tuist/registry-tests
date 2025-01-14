@@ -101,9 +101,13 @@ jobs:
                                          -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild \
                                          $KEYCHAIN_PATH
           xcodebuild -resolvePackageDependencies
+      - name: Install Swift package dependencies with source control and xcodebuild
+        working-directory: ${{ matrix.package }}
+        if: ${{ startsWith(matrix.package, 'xcode-project) && endsWith(matrix.package, '-scm') }}
+        run: xcodebuild -resolvePackageDependencies
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
-        if: ${{ endsWith(matrix.package, '-scm') }}
+        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
         run: swift package resolve --verbose
 
   install-swift-package-manager-main:

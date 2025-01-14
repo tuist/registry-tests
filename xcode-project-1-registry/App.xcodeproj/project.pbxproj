@@ -197,7 +197,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				F88FB8272D36D1B500DC52BE /* XCRemoteSwiftPackageReference "Alamofire" */,
-				F88FB8282D36D94B00DC52BE /* XCRemoteSwiftPackageReference "ios_sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F88724E22D36AADB00C8376E /* Products */;
@@ -564,14 +563,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.10.2;
-			};
-		};
-		F88FB8282D36D94B00DC52BE /* XCRemoteSwiftPackageReference "ios_sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = adjust.ios_sdk;
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
