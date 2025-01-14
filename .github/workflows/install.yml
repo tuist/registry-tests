@@ -87,14 +87,14 @@ jobs:
           repository: swiftlang/swift-package-manager
           path: swift-package-manager
           ref: main
-      # - name: Restore cache
-      #   id: cache-restore
-      #   uses: actions/cache/restore@v4
-      #   with:
-      #     path: |
-      #       swift-package-manager/.build
-      #     key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
-      #     restore-keys: swift-package-manager/.build
+      - name: Restore cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            swift-package-manager/.build
+          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+          restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         working-directory: swift-package-manager
         run: swift build --configuration release
@@ -136,7 +136,7 @@ jobs:
           security default-keychain -s $KEYCHAIN_PATH
           security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
           tuist registry login
-          ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
+          ../swift-package-manager/.build/release/swift-package resolve --verbose
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
