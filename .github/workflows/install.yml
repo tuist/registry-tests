@@ -80,6 +80,8 @@ jobs:
       #     TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
         run: |
           TMP_DIRECTORY=$(mktemp -d)
