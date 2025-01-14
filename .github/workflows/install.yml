@@ -82,6 +82,7 @@ jobs:
         package: [package-1-scm, package-1-registry]
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: swiftlang/swift-package-manager
           path: swift-package-manager
@@ -104,7 +105,6 @@ jobs:
           path: |
             swift-package-manager/.build
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
-      - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
