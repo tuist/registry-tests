@@ -144,11 +144,11 @@ jobs:
         with:
           path: |
             swift-package-manager/.build
-          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+          key: ${{ runner.os }}-v1-${{ hashFiles('swift-package-manager/Package.resolved') }}
           restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         working-directory: swift-package-manager
-        run: swift build --configuration release
+        run: swift build --arch x86_64 --configuration release
       - name: Save cache
         id: cache-save
         uses: actions/cache/save@v4
@@ -202,7 +202,8 @@ jobs:
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose' --show-output
+        run: ls ../swift-package-manager/.build
+          hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry resolve --verbose' --show-output
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
@@ -210,4 +211,6 @@ jobs:
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package resolve' --show-output
+        run: |
+          ls ../swift-package-manager/.build
+          hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package resolve' --show-output
