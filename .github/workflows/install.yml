@@ -34,11 +34,11 @@ jobs:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies
         working-directory: ${{ matrix.package }}
-        if: endsWith(${{ matrix.package }}, '-registry')
+        if: ${{ endsWith(matrix.package, '-registry') }}
         run: swift package --replace-scm-with-registry resolve --verbose
       - name: Install Swift package dependencies
         working-directory: ${{ matrix.package }}
-        if: endsWith(${{ matrix.package }}, '-scm')
+        if: ${{ endsWith($matrix.package, '-scm') }}
         run: swift package resolve --verbose
       - name: Save cache
         id: cache-save
