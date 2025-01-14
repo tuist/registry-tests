@@ -34,7 +34,7 @@ jobs:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies
         working-directory: ${{ matrix.package }}
-        run: swift package resolve
+        run: swift package resolve --verbose
       - name: Save cache
         id: cache-save
         uses: actions/cache/save@v4
