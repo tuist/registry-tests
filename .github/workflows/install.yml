@@ -64,11 +64,11 @@ jobs:
       - uses: jdx/mise-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Log in to Tuist
-        run: tuist registry login
-        working-directory: ${{ matrix.package }}
-        env:
-          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+      # - name: Log in to Tuist
+      #   run: tuist registry login
+      #   working-directory: ${{ matrix.package }}
+      #   env:
+      #     TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         env:
