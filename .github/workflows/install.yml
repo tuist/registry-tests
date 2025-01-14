@@ -72,3 +72,44 @@ jobs:
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
         run: swift package resolve --verbose
+
+  install-swift-package-manager-main:
+    name: Install Swift packages with swift-package-manager@main
+    runs-on: macos-15
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        package: [package-1-scm, package-1-registry]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: swiftlang/swift-package-manager
+          path: swift-package-manager
+          ref: main
+      - name: Restore cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            swift-package-manager/.build
+          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+          restore-keys: swift-package-manager/.build
+      - name: Build Swift Package Manager
+        run: swift build --package-path swift-package-manager --configuration release
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Tuist
+        run: tuist registry login
+        working-directory: ${{ matrix.package }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+      - name: Install Swift package dependencies with registry
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-registry') }}
+        run: swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
+      - name: Install Swift package dependencies with source control
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-scm') }}
+        run: swift-package-manager/.build/release/swift-package resolve --verbose
