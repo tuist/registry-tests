@@ -72,10 +72,12 @@ jobs:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
-        env:
-          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
         run: swift package --replace-scm-with-registry resolve --verbose
+      - name: Hyperfine Swift package dependencies with registry
+        working-directory: ${{ matrix.package }}
+        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 'swift package --replace-scm-with-registry resolve'
       - name: Resolve Swift package dependencies with registry and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
@@ -101,14 +103,26 @@ jobs:
                                          -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild \
                                          $KEYCHAIN_PATH
           xcodebuild -resolvePackageDependencies
+      - name: Hyperfine Swift package dependencies registry and xcodebuild
+        working-directory: ${{ matrix.package }}
+        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+        run: hyperfine --prepare 'rm -rf packages' --warmup 1 --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages'
       - name: Install Swift package dependencies with source control and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project) && endsWith(matrix.package, '-scm') }}
         run: xcodebuild -resolvePackageDependencies
+      - name: Hyperfine Swift package dependencies source control and xcodebuild
+        working-directory: ${{ matrix.package }}
+        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
+        run: hyperfine --prepare 'rm -rf packages' --warmup 1 --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages'
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
         run: swift package resolve --verbose
+      - name: Hyperfine Swift package dependencies with source control
+        working-directory: ${{ matrix.package }}
+        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 'swift package resolve'
 
   install-swift-package-manager-main:
     name: Install with swift-package-manager@main
@@ -185,7 +199,15 @@ jobs:
                       -S "com.apple.swift-package,com.apple.security,com.apple.dt.Xcode,apple-tool:,apple:,codesign" \
                       -k $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
           ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
+      - name: Hyperfine Swift package dependencies with registry
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-registry') }}
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve'
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
         run: ../swift-package-manager/.build/release/swift-package resolve --verbose
+      - name: Hyperfine Swift package dependencies with source control
+        working-directory: ${{ matrix.package }}
+        if: ${{ endsWith(matrix.package, '-scm') }}
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 '../swift-package-manager/.build/release/swift-package resolve'
