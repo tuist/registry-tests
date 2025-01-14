@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   install-cache:
-    name: Install Swift packages with cache
+    name: Install with cache
     runs-on: macos-15
     timeout-minutes: 20
     strategy:
@@ -32,7 +32,7 @@ jobs:
         working-directory: ${{ matrix.package }}
         env:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-      - name: Install Swift package dependencies with registry
+      - name: Install with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
         run: swift package --replace-scm-with-registry resolve --verbose
@@ -74,7 +74,7 @@ jobs:
         run: swift package resolve --verbose
 
   install-swift-package-manager-main:
-    name: Install Swift packages with swift-package-manager@main
+    name: Install with swift-package-manager@main
     runs-on: macos-15
     timeout-minutes: 20
     strategy:
@@ -87,14 +87,14 @@ jobs:
           repository: swiftlang/swift-package-manager
           path: swift-package-manager
           ref: main
-      - name: Restore cache
-        id: cache-restore
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            swift-package-manager/.build
-          key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
-          restore-keys: swift-package-manager/.build
+      # - name: Restore cache
+      #   id: cache-restore
+      #   uses: actions/cache/restore@v4
+      #   with:
+      #     path: |
+      #       swift-package-manager/.build
+      #     key: ${{ runner.os }}-${{ hashFiles('swift-package-manager/Package.resolved') }}
+      #     restore-keys: swift-package-manager/.build
       - name: Build Swift Package Manager
         working-directory: swift-package-manager
         run: swift build --configuration release
