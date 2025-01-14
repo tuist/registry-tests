@@ -196,7 +196,6 @@
 			mainGroup = F88724D82D36AADB00C8376E;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				F88FB8242D36AF7D00DC52BE /* XCRemoteSwiftPackageReference "adjust_signature_sdk" */,
 				F88FB8252D36AF9C00DC52BE /* XCRemoteSwiftPackageReference "ios_sdk" */,
 				F88FB8262D36AFAA00DC52BE /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
@@ -559,14 +558,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F88FB8242D36AF7D00DC52BE /* XCRemoteSwiftPackageReference "adjust_signature_sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adjust/adjust_signature_sdk";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		F88FB8252D36AF9C00DC52BE /* XCRemoteSwiftPackageReference "ios_sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adjust/ios_sdk";

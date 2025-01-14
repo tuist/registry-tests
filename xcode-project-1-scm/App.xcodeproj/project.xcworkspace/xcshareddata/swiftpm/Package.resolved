@@ -1,13 +1,13 @@
 {
-  "originHash" : "5fb1463725a8a1f9b73d7d8eadd17631069232561aa002878ceb8b579688c492",
+  "originHash" : "9201e0f9731d92147e602130f68b7602d6b4301781d7ef48d154b485d6f5b59f",
   "pins" : [
     {
       "identity" : "adjust_signature_sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/adjust/adjust_signature_sdk",
       "state" : {
-        "branch" : "main",
-        "revision" : "41931c009a7c5d9864bdf1e02f384ec072d20a5a"
+        "revision" : "93c40d7fa27b709a81adc50e41b400ce4411c7ff",
+        "version" : "3.35.2"
       }
     },
     {
