@@ -64,11 +64,11 @@ jobs:
       - uses: jdx/mise-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Log in to Tuist
-      #   run: tuist registry login
-      #   working-directory: ${{ matrix.package }}
-      #   env:
-      #     TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+      - name: Log in to Tuist
+        run: tuist registry login
+        working-directory: ${{ matrix.package }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         env:
@@ -170,6 +170,11 @@ jobs:
                                          -U \
                                          -T ../swift-package-manager/.build/release/swift-package \
                                          $KEYCHAIN_PATH
+          security set-internet-password-partition-list \
+                      -a token \
+                      -s tuist.dev \
+                      -S "com.apple.swift-package,com.apple.security,com.apple.dt.Xcode,apple-tool:,apple:,codesign" \
+                      -k $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
           ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
