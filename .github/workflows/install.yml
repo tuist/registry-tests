@@ -1,0 +1,42 @@
+name: Install test
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  install-cache:
+    name: Install Swift package dependencies with cache
+    runs-on: macos-15
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        package: [package-1-scm, package-1-registry]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .build
+          key: ${{ matrix.package }}-${{ runner.os }}-${{ hashFiles('${{ matrix.package }}/Package.resolved') }}
+          restore-keys: .build
+      - name: Log in to Tuist
+        run: tuist registry login
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+      - name: Install Swift package dependencies
+        run: swift package resolve
+      - name: Save cache
+        id: cache-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ${{ matrix.package }}/.build
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
