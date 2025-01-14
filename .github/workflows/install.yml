@@ -125,6 +125,8 @@ jobs:
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
+        env:
+          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
         run: |
           TMP_DIRECTORY=$(mktemp -d)
           KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
