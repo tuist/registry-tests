@@ -89,14 +89,6 @@ jobs:
           security default-keychain -s $KEYCHAIN_PATH
           security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
           AUTHORISATION=(-T /usr/bin/security -T /usr/bin/codesign -T /usr/bin/xcodebuild -T /usr/bin/swift -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild)
-          security add-internet-password -a token \
-                                         -s tuist.dev \
-                                         -w $TUIST_CONFIG_TOKEN \
-                                         -r htps \
-                                         -U \
-                                         "${AUTHORISATION[@]}" \
-                                         $KEYCHAIN_PATH
-          security find-internet-password $KEYCHAIN_PATH
           xcodebuild -resolvePackageDependencies
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
