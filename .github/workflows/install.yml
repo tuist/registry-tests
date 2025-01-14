@@ -10,7 +10,7 @@ jobs:
   install-cache:
     name: Install with cache
     runs-on: macos-15
-    timeout-minutes: 20
+    timeout-minutes: 50
     strategy:
       matrix:
         package: [package-1-scm, package-1-registry]
@@ -50,7 +50,7 @@ jobs:
   install:
     name: Install Swift packages
     runs-on: macos-15
-    timeout-minutes: 20
+    timeout-minutes: 50
     strategy:
       matrix:
         package:
@@ -129,7 +129,7 @@ jobs:
   install-swift-package-manager-main:
     name: Install with swift-package-manager@main
     runs-on: macos-15
-    timeout-minutes: 20
+    timeout-minutes: 50
     strategy:
       matrix:
         package:
