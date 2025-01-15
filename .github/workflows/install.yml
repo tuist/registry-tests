@@ -59,7 +59,7 @@ jobs:
   install:
     name: Install Swift packages
     runs-on: macos-15
-    timeout-minutes: 50
+    timeout-minutes: 90
     strategy:
       matrix:
         package: [
