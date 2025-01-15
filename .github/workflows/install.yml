@@ -79,7 +79,7 @@ jobs:
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 'swift package --replace-scm-with-registry resolve'
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --replace-scm-with-registry resolve'
       - name: Resolve Swift package dependencies with registry and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
@@ -108,7 +108,7 @@ jobs:
       - name: Hyperfine Swift package dependencies registry and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: hyperfine --prepare 'rm -rf packages' --warmup 1 --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages'
+        run: hyperfine --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
       - name: Install Swift package dependencies with source control and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
@@ -116,7 +116,7 @@ jobs:
       - name: Hyperfine Swift package dependencies source control and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --prepare 'rm -rf packages' --warmup 1 --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages'
+        run: hyperfine --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
@@ -124,7 +124,7 @@ jobs:
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 --warmup 1 'swift package resolve'
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package resolve' --show-output
 
   install-swift-package-manager-main:
     name: Install with swift-package-manager@main
@@ -205,7 +205,7 @@ jobs:
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry resolve'
+        run: hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry resolve' --show-output
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
@@ -215,4 +215,4 @@ jobs:
         if: ${{ endsWith(matrix.package, '-scm') }}
         run: |
           ls ../swift-package-manager/.build
-          hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 --warmup 1 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package resolve'
+          hyperfine --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package resolve' --show-output
