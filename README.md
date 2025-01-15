@@ -58,9 +58,9 @@ Time (mean ± σ):     42.102 s ±  3.453 s    [User: 68.086 s, System: 10.986 s
 Range (min … max):   38.757 s … 46.024 s    5 runs
 ```
 
-~48 % faster compared to registry with the current swift-package-manager.
-~42 % faster compared to source control with the current swift-package-manager.
-~15 % slower compared to source control with the latest swift-package-manager.
+- ~48 % faster compared to registry with the current swift-package-manager.
+- ~42 % faster compared to source control with the current swift-package-manager.
+- ~15 % slower compared to source control with the latest swift-package-manager.
 
 ### Package 2 (63 dependencies)
 
@@ -82,7 +82,7 @@ Time (mean ± σ):     289.427 s ± 18.107 s    [User: 173.334 s, System: 31.886
 Range (min … max):   263.536 s … 311.480 s    5 runs
 ```
 
-Around 7 % faster compared to source control.
+- ~7 % faster compared to source control.
 
 #### Source control with cache
 
@@ -120,6 +120,37 @@ Time (mean ± σ):     193.458 s ±  5.784 s    [User: 122.490 s, System: 17.624
 Range (min … max):   185.861 s … 201.466 s    5 runs
 ```
 
-~38 % faster compared to source control with the current swift-package-manager.
-~33 % faster compared to registry with the current swift-package-manager.
-~1.5 % faster compared to source control with the latest swift-package-manager.
+- ~38 % faster compared to source control with the current swift-package-manager.
+- ~33 % faster compared to registry with the current swift-package-manager.
+- ~1.5 % faster compared to source control with the latest swift-package-manager.
+
+### Package 3 (62 dependencies)
+
+#### Source control with cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652131645
+
+- Cache size: 3037 MB
+- Save cache: ~86 s
+
+#### Registry with cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652132887
+
+- Cache size: 390 MB
+- Save cache: ~15 s
+
+### Package 4 (73 dependencies)
+
+#### Source control with cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652133715
+
+- Cache size:
+
+#### Registry with cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652134736
+
+- Cache size: 626 MB
+- Save cache: ~33 s
