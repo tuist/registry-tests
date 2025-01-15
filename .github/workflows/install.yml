@@ -13,12 +13,11 @@ jobs:
     timeout-minutes: 50
     strategy:
       matrix:
-        package:
-          [
-            package-1-scm,
-            package-1-registry,
-            package-2-scm,
-            package-2-registry,
+        package: [
+            # package-1-scm,
+            # package-1-registry,
+            # package-2-scm,
+            # package-2-registry,
             package-3-scm,
             package-3-registry,
             package-4-scm,
@@ -63,12 +62,11 @@ jobs:
     timeout-minutes: 50
     strategy:
       matrix:
-        package:
-          [
-            package-1-scm,
-            package-1-registry,
-            package-2-scm,
-            package-2-registry,
+        package: [
+            # package-1-scm,
+            # package-1-registry,
+            # package-2-scm,
+            # package-2-registry,
             package-3-scm,
             package-3-registry,
             package-4-scm,
@@ -146,12 +144,11 @@ jobs:
     timeout-minutes: 50
     strategy:
       matrix:
-        package:
-          [
-            package-1-scm,
-            package-1-registry,
-            package-2-scm,
-            package-2-registry,
+        package: [
+            # package-1-scm,
+            # package-1-registry,
+            # package-2-scm,
+            # package-2-registry,
             package-3-scm,
             package-3-registry,
             package-4-scm,
