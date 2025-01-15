@@ -1,0 +1,47 @@
+// swift-tools-version:5.9
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+import PackageDescription
+
+let package = Package(
+    name: "Library",
+    dependencies: [
+        .package(id: "realm.SwiftLint", exact: "0.46.5"),
+        .package(id: "malcommac.SwiftDate", exact: "6.3.1"),
+        .package(id: "marmelroy.PhoneNumberKit", exact: "4.0.1"),
+        .package(id: "siteline.SwiftUI-Introspect", exact: "0.1.4"),
+        .package(id: "OneSignal.OneSignal-XCFramework", exact: "5.0.5"),
+        .package(id: "mixpanel.mixpanel-swift", exact: "3.1.6"),
+        .package(id: "nathantannar4.InputBarAccessoryView", exact: "5.4.0"),
+        .package(id: "airbnb.lottie-ios", exact: "4.5.0"),
+        .package(id: "realm.realm-swift", exact: "20.0.0"),
+        .package(id: "kean.Pulse", exact: "4.2.1"),
+        .package(id: "hmlongco.Factory", exact: "2.3.0"),
+        .package(id: "pointfreeco.swift-snapshot-testing", exact: "1.10.0"),
+        .package(id: "yaslab.ULID_swift", exact: "1.2.0"),
+        .package(id: "MobileNativeFoundation.Kronos", exact: "4.2.1"),
+        .package(id: "kean.Nuke", exact: "12.6.0"),
+        .package(id: "pointfreeco.swift-url-routing", exact: "0.6.0"),
+        .package(id: "pointfreeco.swift-identified-collections", exact: "0.5.0"),
+        .package(id: "CombineCommunity.CombineExt", exact: "1.8.1"),
+        .package(id: "apple.swift-log", exact: "1.5.4"),
+        .package(id: "firebase.firebase-ios-sdk", exact: "10.23.0"),
+        .package(id: "krzysztofzablocki.Difference", exact: "1.0.1"),
+        .package(id: "apollographql.apollo-ios", exact: "1.9.3"),
+        .package(id: "marmelroy.Zip", exact: "2.1.2"),
+        .package(id: "pinterest.PINCache", exact: "3.0.3"),
+        .package(id: "devicekit.DeviceKit", exact: "5.2.1"),
+        .package(id: "evgenyneu.keychain-swift", exact: "20.0.0"),
+        .package(id: "auth0.JWTDecode_swift", exact: "3.0.1"),
+        .package(id: "simibac.ConfettiSwiftUI", exact: "1.0.1"),
+        .package(id: "b3ll.Motion", exact: "0.1.4"),
+        .package(id: "yonat.MultiSlider", from: "2.1.0"),
+        .package(id: "pointfreeco.swift-perception", exact: "1.1.3"),
+        .package(id: "davidstump.SwiftPhoenixClient", exact: "5.3.4"),
+        .package(id: "apple.swift-argument-parser", exact: "1.3.1"),
+        .package(id: "JohnSundell.ShellOut", exact: "2.3.0"),
+        .package(id: "apple.swift-collections", exact: "1.1.0"),
+        .package(id: "nathantannar4.InputBarAccessoryView", exact: "5.4.0"),
+        .package(id: "mihai8804858.swift-srt-parser", exact: "1.0.2"),
+        .package(id: "apple.swift-atomics", from: "1.0.0"),
+    ]
+)

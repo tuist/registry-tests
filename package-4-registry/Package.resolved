@@ -1,0 +1,589 @@
+{
+  "pins" : [
+    {
+      "identity" : "adjust.adjust_signature_sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.20.1"
+      }
+    },
+    {
+      "identity" : "adjust.ios_sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.0.0"
+      }
+    },
+    {
+      "identity" : "airbnb.lottie-spm",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.4.3"
+      }
+    },
+    {
+      "identity" : "airsidemobile.JOSESwift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "Alamofire.Alamofire",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.9.0"
+      }
+    },
+    {
+      "identity" : "AliSoftware.OHHTTPStubs",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "9.0.0"
+      }
+    },
+    {
+      "identity" : "apple.swift-algorithms",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "apple.swift-async-algorithms",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "apple.swift-collections",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "apple.swift-log",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.5.3"
+      }
+    },
+    {
+      "identity" : "apple.swift-numerics",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "apple.swift-protobuf",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.28.2"
+      }
+    },
+    {
+      "identity" : "apple.swift-syntax",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "509.0.1"
+      }
+    },
+    {
+      "identity" : "ashleymills.Reachability_swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.0.0"
+      }
+    },
+    {
+      "identity" : "aws-amplify.amplify-swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.15.4"
+      }
+    },
+    {
+      "identity" : "aws-amplify.amplify-swift-utils-notifications",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "aws-amplify.amplify-ui-swift-liveness",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.4"
+      }
+    },
+    {
+      "identity" : "aws-amplify.aws-appsync-realtime-client-ios",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.1.1"
+      }
+    },
+    {
+      "identity" : "awslabs.aws-crt-swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.6.1"
+      }
+    },
+    {
+      "identity" : "awslabs.aws-sdk-swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.13.0"
+      }
+    },
+    {
+      "identity" : "awslabs.smithy-swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.15.0"
+      }
+    },
+    {
+      "identity" : "braze-inc.braze-swift-sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.2.0"
+      }
+    },
+    {
+      "identity" : "daltoniam.Starscream",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.0.4"
+      }
+    },
+    {
+      "identity" : "firebase.firebase-ios-sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.24.0"
+      }
+    },
+    {
+      "identity" : "firebase.leveldb",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "firebase.nanopb",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.30909.0"
+      }
+    },
+    {
+      "identity" : "getsentry.sentry-cocoa",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "8.36.0"
+      }
+    },
+    {
+      "identity" : "google.abseil-cpp-binary",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2024011601.1"
+      }
+    },
+    {
+      "identity" : "google.app-check",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.19.0"
+      }
+    },
+    {
+      "identity" : "google.GoogleAppMeasurement",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.24.0"
+      }
+    },
+    {
+      "identity" : "google.GoogleDataTransport",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "9.3.0"
+      }
+    },
+    {
+      "identity" : "google.GoogleSignIn-iOS",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "6.2.4"
+      }
+    },
+    {
+      "identity" : "google.GoogleUtilities",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "7.12.1"
+      }
+    },
+    {
+      "identity" : "google.grpc-binary",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.62.2"
+      }
+    },
+    {
+      "identity" : "google.gtm-session-fetcher",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "google.GTMAppAuth",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.1"
+      }
+    },
+    {
+      "identity" : "google.interop-ios-for-google-sdks",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "100.0.0"
+      }
+    },
+    {
+      "identity" : "google.promises",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "googlemaps.ios-maps-sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "9.1.1"
+      }
+    },
+    {
+      "identity" : "johnxnguyen.Down",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.11.0"
+      }
+    },
+    {
+      "identity" : "kean.Pulse",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.0.0"
+      }
+    },
+    {
+      "identity" : "MaxDesiatov.XMLCoder",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.17.1"
+      }
+    },
+    {
+      "identity" : "nathantannar4.InputBarAccessoryView",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "4.3.3"
+      }
+    },
+    {
+      "identity" : "nytimes.NYTPhotoViewer",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.0.6"
+      }
+    },
+    {
+      "identity" : "openid.AppAuth-iOS",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.6.0"
+      }
+    },
+    {
+      "identity" : "optonaut.ActiveLabel_swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.5"
+      }
+    },
+    {
+      "identity" : "pinterest.PINCache",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.0.3"
+      }
+    },
+    {
+      "identity" : "pinterest.PINOperation",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2.2"
+      }
+    },
+    {
+      "identity" : "pinterest.PINRemoteImage",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.0.3"
+      }
+    },
+    {
+      "identity" : "plaid.plaid-link-ios",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.3.3"
+      }
+    },
+    {
+      "identity" : "pointfreeco.combine-schedulers",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-case-paths",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.5.6"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-clocks",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-composable-architecture",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.15.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-concurrency-extras",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-custom-dump",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.2"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-dependencies",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.4.1"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-identified-collections",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-navigation",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "2.2.2"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-perception",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.5"
+      }
+    },
+    {
+      "identity" : "pointfreeco.swift-snapshot-testing",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.17.5"
+      }
+    },
+    {
+      "identity" : "pointfreeco.xctest-dynamic-overlay",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.4.2"
+      }
+    },
+    {
+      "identity" : "ReactiveX.RxSwift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.1.3"
+      }
+    },
+    {
+      "identity" : "realm.realm-core",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "14.12.1"
+      }
+    },
+    {
+      "identity" : "realm.realm-swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "10.53.1"
+      }
+    },
+    {
+      "identity" : "SDWebImage.libwebp-Xcode",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "1.3.2"
+      }
+    },
+    {
+      "identity" : "SDWebImage.SDWebImage",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.19.7"
+      }
+    },
+    {
+      "identity" : "SnapKit.SnapKit",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "stephencelis.SQLite_swift",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "0.13.2"
+      }
+    },
+    {
+      "identity" : "stripe.stripe-ios-spm",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "23.2.0"
+      }
+    },
+    {
+      "identity" : "stripe.stripe-terminal-ios",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.5.0"
+      }
+    },
+    {
+      "identity" : "swiftlang.swift-syntax",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "underdog-tech.pinwheel-ios-sdk",
+      "kind" : "registry",
+      "location" : "",
+      "state" : {
+        "version" : "3.0.5"
+      }
+    }
+  ],
+  "version" : 2
+}
