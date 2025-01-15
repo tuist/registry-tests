@@ -128,29 +128,35 @@ Range (min … max):   185.861 s … 201.466 s    5 runs
 
 #### Source control with cache
 
-Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652131645
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652131645 & https://github.com/tuist/registry-tests/actions/runs/12790261608/job/35655616668
 
 - Cache size: 3037 MB
+- Restore cache: ~56 s
+- Resolve: ~22 s
 - Save cache: ~86 s
 
 #### Registry with cache
 
-Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652132887
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652132887 &
 
-- Cache size: 390 MB
-- Save cache: ~15 s
+- Cache size: 390 MB (87 % less compared to source control)
+- Restore cache: ~17 s (70 % faster compared to source control)
+- Resolve: ~27 s (23 % slower compared to source control – most likely an incosistent result as we're not hitting network in this case)
+- Save cache: ~15 s (82 % faster compared to source control)
 
 ### Package 4 (73 dependencies)
 
 #### Source control with cache
 
-Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652133715
+Source: https://github.com/tuist/registry-tests/actions/runs/12790261608/job/35655617538
 
 - Cache size:
 
 #### Registry with cache
 
-Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652134736
+Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652134736 & https://github.com/tuist/registry-tests/actions/runs/12790261608/job/35655617980
 
 - Cache size: 626 MB
+- Restore cache: ~23 s
+- Resolve: ~18 s
 - Save cache: ~33 s

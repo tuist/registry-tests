@@ -34,7 +34,7 @@ jobs:
         with:
           path: |
             ${{ matrix.package }}/.build
-          key: ${{ runner.os }}-${{ hashFiles('*/Package.resolved') }}-${{ matrix.package }}
+          key: ${{ runner.os }}-v1-${{ hashFiles('*/Package.resolved') }}-${{ matrix.package }}
           restore-keys: ${{ matrix.package }}/.build
       - name: Log in to Tuist
         run: tuist registry login
