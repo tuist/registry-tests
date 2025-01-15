@@ -108,7 +108,7 @@ jobs:
       - name: Hyperfine Swift package dependencies registry and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: hyperfine --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
       - name: Install Swift package dependencies with source control and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
@@ -116,7 +116,7 @@ jobs:
       - name: Hyperfine Swift package dependencies source control and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
