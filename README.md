@@ -148,15 +148,18 @@ Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/356
 
 #### Source control with cache
 
-Source: https://github.com/tuist/registry-tests/actions/runs/12790261608/job/35655617538
+Source: https://github.com/tuist/registry-tests/actions/runs/12790594605/job/35656702051
 
-- Cache size:
+- Cache size: 6619 MB
+- Restore cache: ~120 s
+- Resolve: ~27 s
+- Save cache: ~230 s
 
 #### Registry with cache
 
 Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652134736 & https://github.com/tuist/registry-tests/actions/runs/12790261608/job/35655617980
 
-- Cache size: 626 MB
-- Restore cache: ~23 s
-- Resolve: ~18 s
-- Save cache: ~33 s
+- Cache size: 626 MB (91 % less compared to source control)
+- Restore cache: ~23 s (81 % faster compared to source control)
+- Resolve: ~18 s (33 % faster compared to source control – when using cache, we no longer hit the network, so this time is not too relevant but probably a one-off)
+- Save cache: ~33 s (86 % faster compared to source control)
