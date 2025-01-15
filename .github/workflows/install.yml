@@ -13,7 +13,8 @@ jobs:
     timeout-minutes: 50
     strategy:
       matrix:
-        package: [package-1-scm, package-1-registry]
+        package:
+          [package-1-scm, package-1-registry, package-2-scm, package-2-registry]
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
