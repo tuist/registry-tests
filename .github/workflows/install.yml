@@ -138,9 +138,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: swiftlang/swift-package-manager
+          repository: tuist/swift-package-manager
           path: swift-package-manager
-          ref: main
+          ref: workspace-state-actor
       - name: Restore cache
         id: cache-restore
         uses: actions/cache/restore@v4
