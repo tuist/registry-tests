@@ -1,3 +1,3 @@
 [tools]
-tuist = "4.39.1"
+tuist = "4.39.0"
 hyperfine = "1.19.0"

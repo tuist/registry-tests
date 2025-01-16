@@ -38,7 +38,9 @@ jobs:
         working-directory: tuist
         env:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-        run: tuist run tuist registry login --path ${{ matrix.package }}
+        run: |
+          tuist install
+          tuist run tuist registry login --path ${{ matrix.package }}
       - name: Install dependencies
         working-directory: ${{ matrix.package }}
         run: xcodebuild -resolvePackageDependencies
