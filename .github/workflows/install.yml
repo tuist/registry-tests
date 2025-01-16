@@ -40,10 +40,6 @@ jobs:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
         run: |
           tuist install
-          tuist run tuist registry login --path ${{ matrix.package }}
-      - name: Install dependencies
-        working-directory: ${{ matrix.package }}
-        run: |
           TMP_DIRECTORY=$(mktemp -d)
           KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
           KEYCHAIN_PASSWORD=$(uuidgen)
@@ -51,6 +47,10 @@ jobs:
           security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
           security default-keychain -s $KEYCHAIN_PATH
           security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+          tuist run tuist registry login --path ${{ matrix.package }}
+      - name: Install dependencies
+        working-directory: ${{ matrix.package }}
+        run: |
           xcodebuild -resolvePackageDependencies
       # - name: Save cache
       #   id: cache-save
