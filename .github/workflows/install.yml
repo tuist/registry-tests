@@ -157,17 +157,17 @@ jobs:
           security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
           security default-keychain -s $KEYCHAIN_PATH
           security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-                  security add-internet-password -a token \
-                                                -s tuist.dev \
-                                                -w $TUIST_CONFIG_TOKEN \
-                                                -r htps \
-                                                -U \
-                                                -T /usr/bin/security \
-                                                -T /usr/bin/codesign \
-                                                -T /usr/bin/xcodebuild \
-                                                -T /usr/bin/swift \
-                                                -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild \
-                  xcodebuild -resolvePackageDependencies
+          security add-internet-password -a token \
+                                        -s tuist.dev \
+                                        -w $TUIST_CONFIG_TOKEN \
+                                        -r htps \
+                                        -U \
+                                        -T /usr/bin/security \
+                                        -T /usr/bin/codesign \
+                                        -T /usr/bin/xcodebuild \
+                                        -T /usr/bin/swift \
+                                        -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild
+          xcodebuild -resolvePackageDependencies
       - name: Hyperfine Swift package dependencies registry and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
