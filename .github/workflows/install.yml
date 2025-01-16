@@ -7,136 +7,178 @@ permissions:
   contents: read
 
 jobs:
-  install-cache:
-    name: Install with cache
+  install-xcode-cache:
+    name: Install Xcode project dependencies with cache
     runs-on: macos-15
-    timeout-minutes: 50
+    timeout-minutes: 20
     strategy:
       matrix:
-        package: [
-            # package-1-scm,
-            # package-1-registry,
-            # package-2-scm,
-            # package-2-registry,
-            package-3-scm,
-            package-3-registry,
-            package-4-scm,
-            package-4-registry,
-          ]
+        package: [xcode-project-1-registry]
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Restore cache
-        id: cache-restore
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            ${{ matrix.package }}/.build
-          key: ${{ runner.os }}-v1-${{ hashFiles('*/Package.resolved') }}-${{ matrix.package }}
-          restore-keys: ${{ matrix.package }}/.build
-      - name: Log in to Tuist
-        run: tuist registry login
-        working-directory: ${{ matrix.package }}
-        env:
-          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-      - name: Install with registry
-        working-directory: ${{ matrix.package }}
-        if: ${{ endsWith(matrix.package, '-registry') }}
-        run: swift package --replace-scm-with-registry resolve --verbose
-      - name: Install Swift package dependencies with source control
-        working-directory: ${{ matrix.package }}
-        if: ${{ endsWith(matrix.package, '-scm') }}
-        run: swift package resolve --verbose
-      - name: Save cache
-        id: cache-save
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ${{ matrix.package}}/.build
-          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
-  install:
-    name: Install Swift packages
-    runs-on: macos-15
-    timeout-minutes: 90
-    strategy:
-      matrix:
-        package: [
-            # package-1-scm,
-            # package-1-registry,
-            # package-2-scm,
-            # package-2-registry,
-            package-3-scm,
-            package-3-registry,
-            package-4-scm,
-            package-4-registry,
-            xcode-project-1-registry,
-            xcode-project-1-scm,
-          ]
-    steps:
       - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repository: tuist/tuist
+          path: tuist
+          ref: registry/ci-login
+      # - name: Restore cache
+      #   id: cache-restore
+      #   uses: actions/cache/restore@v4
+      #   with:
+      #     path: |
+      #       ${{ matrix.package }}/.build
+      #     key: ${{ runner.os }}-v1-${{ hashFiles('*/Package.resolved') }}-${{ matrix.package }}
+      #     restore-keys: ${{ matrix.package }}/.build
       - name: Log in to Tuist
-        run: tuist registry login
-        working-directory: ${{ matrix.package }}
+        # run: tuist registry login
+        # working-directory: ${{ matrix.package }}
+        working-directory: tuist
         env:
           TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-      - name: Install Swift package dependencies with registry
+        run: tuist run tuist registry login --path ${{ matrix.package }}
+      - name: Install dependencies
         working-directory: ${{ matrix.package }}
-        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: swift package --replace-scm-with-registry resolve --verbose
-      - name: Hyperfine Swift package dependencies with registry
-        working-directory: ${{ matrix.package }}
-        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --replace-scm-with-registry resolve' --show-output
-      - name: Resolve Swift package dependencies with registry and xcodebuild
-        working-directory: ${{ matrix.package }}
-        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        env:
-          TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
-        run: |
-          TMP_DIRECTORY=$(mktemp -d)
-          KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
-          KEYCHAIN_PASSWORD=$(uuidgen)
-          security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-          security default-keychain -s $KEYCHAIN_PATH
-          security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-          security add-internet-password -a token \
-                                         -s tuist.dev \
-                                         -w $TUIST_CONFIG_TOKEN \
-                                         -r htps \
-                                         -U \
-                                         -T /usr/bin/security \
-                                         -T /usr/bin/codesign \
-                                         -T /usr/bin/xcodebuild \
-                                         -T /usr/bin/swift \
-                                         -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild \
-                                         $KEYCHAIN_PATH
-          xcodebuild -resolvePackageDependencies
-      - name: Hyperfine Swift package dependencies registry and xcodebuild
-        working-directory: ${{ matrix.package }}
-        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
-      - name: Install Swift package dependencies with source control and xcodebuild
-        working-directory: ${{ matrix.package }}
-        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
         run: xcodebuild -resolvePackageDependencies
-      - name: Hyperfine Swift package dependencies source control and xcodebuild
-        working-directory: ${{ matrix.package }}
-        if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
-      - name: Install Swift package dependencies with source control
-        working-directory: ${{ matrix.package }}
-        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: swift package resolve --verbose
-      - name: Hyperfine Swift package dependencies with source control
-        working-directory: ${{ matrix.package }}
-        if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package resolve' --show-output
+      # - name: Save cache
+      #   id: cache-save
+      #   uses: actions/cache/save@v4
+      #   with:
+      #     path: |
+      #       ${{ matrix.package}}/.build
+      #     key: ${{ steps.cache-restore.outputs.cache-primary-key }
+  # install-cache:
+  #   name: Install with cache
+  #   runs-on: macos-15
+  #   timeout-minutes: 50
+  #   strategy:
+  #     matrix:
+  #       package: [
+  #           # package-1-scm,
+  #           # package-1-registry,
+  #           # package-2-scm,
+  #           # package-2-registry,
+  #           package-3-scm,
+  #           package-3-registry,
+  #           package-4-scm,
+  #           package-4-registry,
+  #         ]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: jdx/mise-action@v2
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Restore cache
+  #       id: cache-restore
+  #       uses: actions/cache/restore@v4
+  #       with:
+  #         path: |
+  #           ${{ matrix.package }}/.build
+  #         key: ${{ runner.os }}-v1-${{ hashFiles('*/Package.resolved') }}-${{ matrix.package }}
+  #         restore-keys: ${{ matrix.package }}/.build
+  #     - name: Log in to Tuist
+  #       run: tuist registry login
+  #       working-directory: ${{ matrix.package }}
+  #       env:
+  #         TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+  #     - name: Install with registry
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ endsWith(matrix.package, '-registry') }}
+  #       run: swift package --replace-scm-with-registry resolve --verbose
+  #     - name: Install Swift package dependencies with source control
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ endsWith(matrix.package, '-scm') }}
+  #       run: swift package resolve --verbose
+  #     - name: Save cache
+  #       id: cache-save
+  #       uses: actions/cache/save@v4
+  #       with:
+  #         path: |
+  #           ${{ matrix.package}}/.build
+  #         key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+  # install:
+  #   name: Install Swift packages
+  #   runs-on: macos-15
+  #   timeout-minutes: 90
+  #   strategy:
+  #     matrix:
+  #       package: [
+  #           # package-1-scm,
+  #           # package-1-registry,
+  #           # package-2-scm,
+  #           # package-2-registry,
+  #           package-3-scm,
+  #           package-3-registry,
+  #           package-4-scm,
+  #           package-4-registry,
+  #           xcode-project-1-registry,
+  #           xcode-project-1-scm,
+  #         ]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: jdx/mise-action@v2
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Log in to Tuist
+  #       run: tuist registry login
+  #       working-directory: ${{ matrix.package }}
+  #       env:
+  #         TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+  #     - name: Install Swift package dependencies with registry
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+  #       run: swift package --replace-scm-with-registry resolve --verbose
+  #     - name: Hyperfine Swift package dependencies with registry
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+  #       run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --replace-scm-with-registry resolve' --show-output
+  #     - name: Resolve Swift package dependencies with registry and xcodebuild
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+  #       env:
+  #         TUIST_CONFIG_TOKEN: ${{ secrets.TUIST_CONFIG_TOKEN }}
+  #       run: |
+  #         TMP_DIRECTORY=$(mktemp -d)
+  #         KEYCHAIN_PATH=$TMP_DIRECTORY/keychain.keychain
+  #         KEYCHAIN_PASSWORD=$(uuidgen)
+  #         security create-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+  #         security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+  #         security default-keychain -s $KEYCHAIN_PATH
+  #         security unlock-keychain -p $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
+  #         security add-internet-password -a token \
+  #                                        -s tuist.dev \
+  #                                        -w $TUIST_CONFIG_TOKEN \
+  #                                        -r htps \
+  #                                        -U \
+  #                                        -T /usr/bin/security \
+  #                                        -T /usr/bin/codesign \
+  #                                        -T /usr/bin/xcodebuild \
+  #                                        -T /usr/bin/swift \
+  #                                        -T /Applications/Xcode_16.app/Contents/Developer/usr/bin/xcodebuild \
+  #                                        $KEYCHAIN_PATH
+  #         xcodebuild -resolvePackageDependencies
+  #     - name: Hyperfine Swift package dependencies registry and xcodebuild
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
+  #       run: hyperfine --warmup 1 --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
+  #     - name: Install Swift package dependencies with source control and xcodebuild
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
+  #       run: xcodebuild -resolvePackageDependencies
+  #     - name: Hyperfine Swift package dependencies source control and xcodebuild
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
+  #       run: hyperfine --warmup 1 --prepare 'rm -rf packages' --runs 5 'xcodebuild -resolvePackageDependencies -clonedSourcePackagesDirPath packages' --show-output
+  #     - name: Install Swift package dependencies with source control
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
+  #       run: swift package resolve --verbose
+  #     - name: Hyperfine Swift package dependencies with source control
+  #       working-directory: ${{ matrix.package }}
+  #       if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
+  #       run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package resolve' --show-output
 
   # install-swift-package-manager-main:
   #   name: Install with swift-package-manager@main

@@ -126,6 +126,26 @@ Range (min … max):   185.861 s … 201.466 s    5 runs
 
 ### Package 3 (62 dependencies)
 
+#### Source control without cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12792265727/job/35662299898#step:12:3146
+
+```
+Time (mean ± σ):     301.772 s ± 23.934 s    [User: 338.501 s, System: 69.636 s]
+Range (min … max):   280.729 s … 331.344 s    5 runs
+```
+
+#### Registry without cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12792265727/job/35662301233#step:6:2206
+
+```
+Time (mean ± σ):     348.577 s ± 39.428 s    [User: 145.213 s, System: 34.757 s]
+Range (min … max):   313.693 s … 413.312 s    5 runs
+```
+
+- ~15 % slower compared to source control.
+
 #### Source control with cache
 
 Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/35652131645 & https://github.com/tuist/registry-tests/actions/runs/12790261608/job/35655616668
@@ -145,6 +165,26 @@ Source: https://github.com/tuist/registry-tests/actions/runs/12789209966/job/356
 - Save cache: ~15 s (82 % faster compared to source control)
 
 ### Package 4 (73 dependencies)
+
+#### Source control without cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12792265727/job/35662302337#step:12:3931
+
+```
+Time (mean ± σ):     574.874 s ± 68.071 s    [User: 712.260 s, System: 159.421 s]
+Range (min … max):   475.592 s … 657.923 s    5 runs
+```
+
+#### Registry without cache
+
+Source: https://github.com/tuist/registry-tests/actions/runs/12792265727/job/35662303453#step:6:2692
+
+```
+Time (mean ± σ):     451.905 s ± 59.345 s    [User: 205.768 s, System: 48.115 s]
+Range (min … max):   385.133 s … 503.462 s    5 runs
+```
+
+- ~21 % faster compared to source control.
 
 #### Source control with cache
 
