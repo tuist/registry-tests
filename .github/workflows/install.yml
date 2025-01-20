@@ -44,11 +44,11 @@ jobs:
       - name: Install with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: swift package --replace-scm-with-registry resolve --verbose
+        run: swift package --replace-scm-with-registry --force-resolved-versions resolve
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: swift package resolve --verbose
+        run: swift package --force-resolved-versions resolve
       - name: Save cache
         id: cache-save
         uses: actions/cache/save@v4
@@ -87,11 +87,11 @@ jobs:
       - name: Install Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: swift package --replace-scm-with-registry resolve --verbose
+        run: swift package --replace-scm-with-registry --force-resolved-versions resolve
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --replace-scm-with-registry resolve' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --replace-scm-with-registry --force-resolved-versions resolve' --show-output
       - name: Resolve Swift package dependencies with registry and xcodebuild
         working-directory: ${{ matrix.package }}
         if: ${{ startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-registry') }}
@@ -131,11 +131,11 @@ jobs:
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: swift package resolve --verbose
+        run: swift package resolve --force-resolved-versions
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package resolve' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --force-resolved-versions resolve' --show-output
 
   install-swift-package-manager-main:
     name: Install with swift-package-manager@main
@@ -220,16 +220,16 @@ jobs:
                       -s tuist.dev \
                       -S "com.apple.swift-package,com.apple.security,com.apple.dt.Xcode,apple-tool:,apple:,codesign" \
                       -k $KEYCHAIN_PASSWORD $KEYCHAIN_PATH
-          ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry resolve --verbose
+          ../swift-package-manager/.build/release/swift-package --replace-scm-with-registry --force-resolved-versions resolve
       - name: Hyperfine Swift package dependencies with registry
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-registry') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry resolve' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --replace-scm-with-registry --force-resolved-versions resolve' --show-output
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: ../swift-package-manager/.build/release/swift-package resolve --verbose
+        run: ../swift-package-manager/.build/release/swift-package resolve --force-resolved-versions
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package resolve' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --force-resolved-versions resolve' --show-output
