@@ -19,14 +19,14 @@ Range (min … max):   66.706 s … 86.556 s    5 runs
 
 #### Registry without cache
 
-Source: https://github.com/tuist/registry-tests/actions/runs/12785286884/job/35643544361#step:6:760
+Source: https://github.com/tuist/registry-tests/actions/runs/12866447473/job/35869037584#step:6:760
 
 ```
-Time (mean ± σ):     81.317 s ±  6.360 s    [User: 68.083 s, System: 10.738 s]
-Range (min … max):   72.128 s … 86.903 s    5 runs
+Time (mean ± σ):     69.589 s ±  9.568 s    [User: 65.782 s, System: 9.692 s]
+Range (min … max):   59.352 s … 80.154 s    5 runs
 ```
 
-About 10 % slower compared to source control.
+- ~5 % faster compared to source control.
 
 #### Source control with cache
 
