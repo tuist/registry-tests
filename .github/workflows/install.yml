@@ -14,10 +14,10 @@ jobs:
     strategy:
       matrix:
         package: [
-            package-1-scm,
-            package-1-registry,
-            # package-2-scm,
-            # package-2-registry,
+            # package-1-scm,
+            # package-1-registry,
+            package-2-scm,
+            package-2-registry,
             # package-3-scm,
             # package-3-registry,
             # package-4-scm,
@@ -48,7 +48,7 @@ jobs:
       - name: Install Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: swift package --force-resolved-versions resolve
+        run: swift package resolve
       - name: Save cache
         id: cache-save
         uses: actions/cache/save@v4
@@ -135,7 +135,7 @@ jobs:
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ !startsWith(matrix.package, 'xcode-project') && endsWith(matrix.package, '-scm') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package --force-resolved-versions resolve' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build && swift package purge-cache' --runs 5 'swift package resolve' --show-output
 
   install-swift-package-manager-main:
     name: Install with swift-package-manager@main
@@ -232,4 +232,4 @@ jobs:
       - name: Hyperfine Swift package dependencies with source control
         working-directory: ${{ matrix.package }}
         if: ${{ endsWith(matrix.package, '-scm') }}
-        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package --force-resolved-versions resolve' --show-output
+        run: hyperfine --warmup 1 --prepare 'rm -rf ~/.swiftpm .build' --runs 5 '../swift-package-manager/.build/x86_64-apple-macosx/release/swift-package resolve' --show-output
